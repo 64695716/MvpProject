@@ -3,8 +3,6 @@ package com.example.admin.mvpproject.di.factories
 import android.support.v4.app.Fragment
 import dagger.Binds
 import dagger.Module
-import dagger.android.AndroidInjector
-import dagger.android.support.FragmentKey
 import dagger.multibindings.IntoMap
 
 /**
