@@ -9,19 +9,72 @@ android {
         applicationId "com.example.admin.mvpproject"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+        maxSdkVersion 29
+        multiDexEnabled = true
     }
+
+    signingConfigs {
+        release {
+            storeFile file(releaseStoreFile)
+            storePassword releaseStorePassword
+            keyAlias = releaseKeyAlias
+            keyPassword releaseKeyPassword
+        }
+        debug {
+            storeFile file(debugStoreFile)
+            storePassword debugStorePassword
+            keyAlias = debugKeyAlias
+            keyPassword debugKeyPassword
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable = false
+            shrinkResources true
+            signingConfig signingConfigs.release
+            multiDexEnabled = true
+            zipAlignEnabled = true
+            buildConfigField("boolean", "isTest", IS_TEST)
+        }
+        debug {
+            debuggable = true
+            signingConfig signingConfigs.debug
+            multiDexEnabled = true
+            applicationIdSuffix = '.debug'
+            versionNameSuffix = '.debug'
+            zipAlignEnabled = true
+            buildConfigField("boolean", "isTest", IS_TEST)
         }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    buildToolsVersion = '29.0.0'
+    flavorDimensions 'default'
+
+    productFlavors {
+        huewei {
+            dimension = 'default'
+            applicationIdSuffix = '.hw'
+            multiDexEnabled = true
+            versionNameSuffix = '.hw'
+            versionName VERSION_NAME
+            versionCode VERSION_CODE
+            manifestPlaceholders = [flavors: 'hw']
+        }
     }
 }
 

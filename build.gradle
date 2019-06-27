@@ -1,5 +1,13 @@
 ext {
     var = '1.2.71'
+    releaseStoreFile = './keystore/release.jks'
+    releaseStorePassword = 'test123456'
+    releaseKeyAlias = 'release'
+    releaseKeyPassword = 'test123456'
+    debugStoreFile = './keystore/debug.jks'
+    debugStorePassword = 'test123456'
+    debugKeyAlias = 'debug'
+    debugKeyPassword = 'test123456'
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
