@@ -39,3 +39,8 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+task printVersion() {
+    println("Version Name: $PRODUCT_FLAVORS")
+    println("Version Code: $VERSION_CODE")
+    println("Version BUILD_TYPE: $BUILD_TYPE")
+}

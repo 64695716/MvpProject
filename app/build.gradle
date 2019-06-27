@@ -9,7 +9,7 @@ android {
         applicationId "com.example.admin.mvpproject"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode VERSION_CODE
+        versionCode VERSION_CODE.toInteger()
         versionName VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.debug
@@ -63,16 +63,14 @@ android {
     }
 
     buildToolsVersion = '29.0.0'
-    flavorDimensions 'default'
+    flavorDimensions 'producer'
 
     productFlavors {
         huewei {
-            dimension = 'default'
+            dimension = 'producer'
             applicationIdSuffix = '.hw'
             multiDexEnabled = true
             versionNameSuffix = '.hw'
-            versionName VERSION_NAME
-            versionCode VERSION_CODE
             manifestPlaceholders = [flavors: 'hw']
         }
     }
